@@ -51,34 +51,17 @@ O sistema utiliza uma estrutura de árvore para organizar arquivos e pastas. Cad
 - Uma pasta, contendo um nome e outros nós (arquivos ou pastas).
 
 ### Exemplo de Uso
-Criar Arquivos e Pastas:
-
-```text
-1. Criar Arquivo
-Nome do arquivo: exemplo.txt
-Conteúdo: Este é um arquivo de exemplo.
-
-2. Criar Pasta
-Nome da pasta: documentos
 ```
-## Navegar e Listar Conteúdo
+> mkdir pasta
+> cd pasta
+> touch teste.txt
+Conteúdo: isso é um teste
+> ls
+[F] teste.txt
+> cd ..
+> rm pasta
+> ls
 
-```text
-3. Listar Conteúdo
-- [F] exemplo.txt
-- [D] documentos
-
-4. Mudar Diretório
-Nome do diretório: documentos
-```
-
-##Salvar e Carregar Estado
-```text
-6. Salvar Estado 💾				``	
-Sistema salvo em filesystem.dat
-
-7.  Carregar Estado 💽
-Sistema carregado de filesystem.dat
 ```
 
 ### Requisitos
