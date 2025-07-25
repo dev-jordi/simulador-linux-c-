@@ -3,6 +3,8 @@
 #include <string>
 #include <fstream>
 #include <memory>
+#include <algorithm>
+#include <sstream>
 
 class Node {
 public:
@@ -134,64 +136,73 @@ public:
     }
 };
 
-int main() {
+int main()
+{
     FileSystem fs;
-    int choice;
+    std::string input;
 
-    do {
-        std::cout << "\n=== Sistema de Arquivos Virtual ===\n";
-        std::cout << "1. Criar Arquivo\n";
-        std::cout << "2. Criar Pasta\n";
-        std::cout << "3. Listar Conteúdo\n";
-        std::cout << "4. Mudar Diretório\n";
-        std::cout << "5. Remover Arquivo/Pasta\n";
-        std::cout << "6. Salvar Estado\n";
-        std::cout << "7. Carregar Estado\n";
-        std::cout << "8. Sair\n";
-        std::cout << "Escolha: ";
-        std::cin >> choice;
+    std::cout << "=== Shell do Sistema de Arquivos Virtual ===\n";
+    while (true)
+    {
+        std::cout << "> ";
+        std::getline(std::cin, input);
 
-        std::string name, content;
-        switch (choice) {
-            case 1:
-                std::cout << "Nome do arquivo: ";
-                std::cin >> name;
-                std::cin.ignore();
-                std::cout << "Conteúdo: ";
-                std::getline(std::cin, content);
-                fs.createFile(name, content);
-                break;
-            case 2:
-                std::cout << "Nome da pasta: ";
-                std::cin >> name;
-                fs.createFolder(name);
-                break;
-            case 3:
-                fs.listContents();
-                break;
-            case 4:
-                std::cout << "Nome do diretório: ";
-                std::cin >> name;
-                fs.changeDirectory(name);
-                break;
-            case 5:
-                std::cout << "Nome do arquivo/pasta: ";
-                std::cin >> name;
-                fs.remove(name);
-                break;
-            case 6:
-                fs.saveToFile("filesystem.dat");
-                break;
-            case 7:
-                fs.loadFromFile("filesystem.dat");
-                break;
-            case 8:
-                std::cout << "Saindo...\n";
-                break;
-            default:
-                std::cout << "Opção inválida!\n";
+        std::istringstream iss(input);
+        std::string cmd;
+        iss >> cmd;
+
+        if (cmd == "touch")
+        {
+            std::string name, content;
+            iss >> name;
+            std::cout << "Conteúdo: ";
+            std::getline(std::cin, content);
+            fs.createFile(name, content);
         }
-    } while (choice != 8);
+        else if (cmd == "mkdir")
+        {
+            std::string name;
+            iss >> name;
+            fs.createFolder(name);
+        }
+        else if (cmd == "ls")
+        {
+            fs.listContents();
+        }
+        else if (cmd == "cd")
+        {
+            std::string name;
+            iss >> name;
+            fs.changeDirectory(name);
+        }
+        else if (cmd == "rm")
+        {
+            std::string name;
+            iss >> name;
+            fs.remove(name);
+        }
+        else if (cmd == "save")
+        {
+            fs.saveToFile("filesystem.dat");
+        }
+        else if (cmd == "load")
+        {
+            fs.loadFromFile("filesystem.dat");
+        }
+        else if (cmd == "exit" || cmd == "quit")
+        {
+            std::cout << "Tchau!\n";
+            break;
+        }
+        else if (cmd.empty())
+        {
+            continue; // ignore empty lines
+        }
+        else
+        {
+            std::cout << "Comando desconhecido: " << cmd << "\n";
+        }
+    }
 
     return 0;
 }
