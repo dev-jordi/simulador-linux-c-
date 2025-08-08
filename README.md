@@ -33,13 +33,13 @@ Após a compilação, execute o programa com:
 ### **3. Comandos Disponíveis
 Durante a execução, você terá acesso às seguintes opções:
 
-- Criar Arquivo: Adicione um novo arquivo com nome e conteúdo.
-- Criar Pasta: Adicione uma nova pasta no diretório atual.
-- Listar Conteúdo: Exiba o conteúdo do diretório atual.
+- Criar Arquivo: Adiciona um novo arquivo com nome e conteúdo.
+- Criar Pasta: Adiciona uma nova pasta no diretório atual.
+- Listar Conteúdo: Exibe o conteúdo do diretório atual.
 - Mudar Diretório: Navegue entre pastas usando o comando `cd`.
 - Remover Arquivo/Pasta: Exclua itens do sistema de arquivos.
 - Salvar Estado: Salve o estado atual do sistema no arquivo `filesystem.dat`.
-- Carregar Estado: Restaure o sistema de arquivos a partir de um arquivo salvo.
+- Carregar Estado: Restaura o sistema de arquivos a partir de um arquivo salvo.
 - Sair: Finalize o programa.
 
 
@@ -75,8 +75,6 @@ Conteúdo: isso é um teste
 -Implementar permissões de arquivo.
 -Criar uma interface gráfica com bibliotecas como Qt ou SFML.
 
-### Contribuindo
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um pull request ou relatar problemas na seção de issues.
 
 ---
 
